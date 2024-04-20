@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon index.js -e js,ejs,css",
-    "postinstall": "npm rebuild bcrypt"
+    "postinstall": "chmod +x ./node_modules/.bin/node-pre-gyp && npm rebuild bcryptt"
   },
   "author": "",
   "license": "ISC",
