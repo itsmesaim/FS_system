@@ -1,0 +1,26 @@
+import socket
+import threading
+
+def send_message(client_socket):
+    while True:
+        message = input("Enter message: ")
+        client_socket.send(message.encode("utf-8"))
+
+# Client setup
+client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+client.connect(('localhost', 6555))
+
+# Start a separate thread for sending messages
+send_thread = threading.Thread(target=send_message, args=(client,))
+send_thread.start()
+
+# Receive messages from the server
+while True:
+    data = client.recv(1024)
+    if not data:
+        break
+
+    message = data.decode("utf-8")
+    print(f"Received from server: {message}")
+
+client.close()

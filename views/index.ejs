@@ -5,27 +5,39 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>upload</title>
+  <link rel="stylesheet" href="../public/css/style.css">
+  <link rel="icon" type="image/svg+xml" href="/public/images/favicon.ico">
 </head>
 
 <body>
-  <% if (locals.fileLink !=null) { %>
-    <div style="margin-bottom: 1rem;">
+  <!-- <% if (locals.fileLink !=null) { %>
+    <div>
       Your file is upload
       <a href="<%= locals.fileLink %>">
         <%= locals.fileLink %>
       </a>
     </div>
-    <% } %>
-      <form action="/upload" method="post"
-        style="display: grid; gap: .5rem; grid-template-columns: auto 1fr; max-width: 500px; margin: 0 auto;"
-        enctype="multipart/form-data">
-        <label for="file">File:</label>
-        <input type="file" id="file" name="file" required />
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" />
-        <button style="grid-column: span 2;" type="submit">Share</button>
-      </form>
+    <% } %> -->
+  <div class="centre">
+    <form action="/upload" method="post" enctype="multipart/form-data">
+      <label for="file">File:</label>
+      <input type="file" id="file" name="file" required />
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" />
+      <button class="btn" type="submit">Share</button>
+    </form>
+    <% if (locals.fileLink !=null) { %>
+      <div class="file-link">
+        Your file is upload at :- 
+        <a href="<%= locals.fileLink %>">
+          <%= locals.fileLink %>
+        </a>
+      </div>
+      <% } %>
+  </div>
+
+
 </body>
 
 </html>

@@ -7,12 +7,17 @@ const serveStatic = require('serve-static');
 const path = require('path');
 require("./src/db/conn");
 const File = require("./src/model/file")
+const favicon = require('serve-favicon');
+
+const static_path = path.join(__dirname, "./public");
 
 const express = require("express")
 const app = express()
 const port = process.env.PORT || 3300;
 
 app.use(express.urlencoded({ extended: true }))
+app.use("/public", express.static('./public'));
+app.use(favicon(path.join(__dirname, './public/images', 'favicon.ico')));
 
 const upload = multer({ dest: "uploads" })
 
